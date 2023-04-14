@@ -1,0 +1,5 @@
+value,name
+ RC,Required Characteristic
+ OC,Optional Characteristic
+ AA,After Accept
+ AR,After Reject

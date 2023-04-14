@@ -1,0 +1,188 @@
+{
+    "_version": "1.48.0",
+    "sap.app": {
+        "id": "quality.groups.groups",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "@sap/generator-fiori:lrop",
+            "version": "1.8.4",
+            "toolsId": "00b1ae14-aa3f-47aa-899c-dfaff30f738e"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "/quality-groups/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [
+                        "annotation"
+                    ],
+                    "localUri": "localService/metadata.xml",
+                    "odataVersion": "4.0"
+                }
+            },
+            "annotation": {
+                "type": "ODataAnnotation",
+                "uri": "annotations/annotation.xml",
+                "settings": {
+                    "localUri": "annotations/annotation.xml"
+                }
+            }
+        },
+        "crossNavigation": {
+            "inbounds": {
+                "quality-groups-groups-inbound": {
+                    "signature": {
+                        "parameters": {},
+                        "additionalParameters": "allowed"
+                    },
+                    "semanticObject": "Advanced Quality Planning",
+                    "action": "Quality Groups",
+                    "title": "{{flpTitle}}",
+                    "subTitle": "{{flpSubtitle}}",
+                    "icon": ""
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": true,
+        "dependencies": {
+            "minUI5Version": "1.109.3",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.ushell": {},
+                "sap.fe.templates": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "quality.groups.groups.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {
+                    "synchronizationMode": "None",
+                    "operationMode": "Server",
+                    "autoExpandSelect": true,
+                    "earlyRequests": true
+                }
+            },
+            "@i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "uri": "i18n/i18n.properties"
+            }
+        },
+        "resources": {
+            "css": []
+        },
+        "routing": {
+            "routes": [
+                {
+                    "pattern": ":?query:",
+                    "name": "QualityGroupsList",
+                    "target": "QualityGroupsList"
+                },
+                {
+                    "pattern": "QualityGroups({key}):?query:",
+                    "name": "QualityGroupsObjectPage",
+                    "target": "QualityGroupsObjectPage"
+                },
+                {
+                    "pattern": "QualityGroups({key})/operations({key2}):?query:",
+                    "name": "QualityGroups_operationsObjectPage",
+                    "target": "QualityGroups_operationsObjectPage"
+                }
+            ],
+            "targets": {
+                "QualityGroupsList": {
+                    "type": "Component",
+                    "id": "QualityGroupsList",
+                    "name": "sap.fe.templates.ListReport",
+                    "options": {
+                        "settings": {
+                            "entitySet": "QualityGroups",
+                            "variantManagement": "Page",
+                            "navigation": {
+                                "QualityGroups": {
+                                    "detail": {
+                                        "route": "QualityGroupsObjectPage"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "QualityGroupsObjectPage": {
+                    "type": "Component",
+                    "id": "QualityGroupsObjectPage",
+                    "name": "sap.fe.templates.ObjectPage",
+                    "options": {
+                        "settings": {
+                            "editableHeaderContent": false,
+                            "entitySet": "QualityGroups",
+                            "navigation": {
+                                "operations": {
+                                    "detail": {
+                                        "route": "QualityGroups_operationsObjectPage"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "QualityGroups_operationsObjectPage": {
+                    "type": "Component",
+                    "id": "QualityGroups_operationsObjectPage",
+                    "name": "sap.fe.templates.ObjectPage",
+                    "options": {
+                        "settings": {
+                            "editableHeaderContent": false,
+                            "entitySet": "QualityGroups_operations"
+                        }
+                    }
+                }
+            }
+        },
+        "extends": {
+            "extensions": {
+                "sap.ui.controllerExtensions": {}
+            }
+        }
+    },
+    "sap.fiori": {
+        "registrationIds": [],
+        "archeType": "transactional"
+    }
+}

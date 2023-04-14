@@ -1,0 +1,41 @@
+{
+  "xsappname": "advanced-quality",
+  "tenant-mode": "dedicated",
+  "scopes": [
+    {
+      "name": "$XSAPPNAME.read",
+      "description": "Read"
+    },
+    {
+      "name": "$XSAPPNAME.edit",
+      "description": "Edit"
+    },
+    {
+      "name": "$XSAPPNAME.delete",
+      "description": "Delete"
+    }
+  ],
+  "attributes": [
+    {
+      "name": "plant",
+      "description": "Site Location",
+      "valueType": "string",
+      "valueRequired": true
+    }
+  ],
+  "role-templates": [
+    {
+      "name": "admin",
+      "description": "All access",
+      "default-role-name": "Admin: Authorized for everything",
+      "scope-references": ["$XSAPPNAME.read", "$XSAPPNAME.edit", "$XSAPPNAME.delete"]
+    },
+    {
+      "name": "reviewer",
+      "description": "Read Data",
+      "default-role-name": "Reviewer: Authorized for Reading Data",
+      "scope-references": ["$XSAPPNAME.read"]
+    }
+  ],
+  "attribute-references": []
+}

@@ -1,0 +1,31 @@
+plantID,plantName,plantLocation,isActive
+P1125,N3 Studio,A452 asdl 5 Street,1
+A1100,Headquarters Cleveland,Headquarters Cleveland,1
+A1110,Finance,Finance,1
+A1120,Human Resources,Human Resources,1
+A1125,Almika Warehouse,Almika Warehouse,1
+L1100,Loxodo,Loxodo,1
+L1110,Loxodo Sales,Loxodo Sales,1
+P1100,Almika Heating Cleveland,Almika Heating Cleveland,1
+P1110,Sales Heating,Sales Heating,1
+P1111,Almika Solar,Almika Solar,1
+P1120,Manufacturing,Manufacturing,1
+P1121,Production,Production,1
+P1122,Central Warehouse,Central Warehouse,1
+P1123,External Warehouse,External Warehouse,1
+P1124,Third Party Managed Warehouse,Third Party Managed Warehouse,1
+P1125,In House Factory,In House Factory,1
+P1126,Tolling Facility,Tolling Facility,1
+P1130,Service & Support Heating,Service & Support Heating,1
+P1140,Online Sales,Online Sales,1
+P1150,"Sales, Service & Support Heating","Sales, Service & Support Heating",1
+S1100,Almika Pro Canton,Almika Pro Canton,1
+S1110,Operations Pro,Operations Pro,1
+S1111,PMO Pro,PMO Pro,1
+S1112,Consulting Canton (East),Consulting Canton (East),1
+S1113,Consulting Fresno (West),Consulting Fresno (West),1
+S1114,Service & Support Pro,Service & Support Pro,1
+S1120,Sales Pro,Sales Pro,1
+S1121,Sales Canton (East),Sales Canton (East),1
+S1122,Sales Fresno (West),Sales Fresno (West),1
+S1130,BR Fresno,BR Fresno,1

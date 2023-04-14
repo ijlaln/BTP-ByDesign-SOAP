@@ -1,0 +1,4 @@
+dataOriginID,dataOriginDescription,isActive
+1,First Data Origin,1 
+2,Second Data Origin,0
+3,Third Data Origin,1

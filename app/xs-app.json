@@ -1,0 +1,10 @@
+{
+  "welcomeFile": "index.html",
+  "authenticationMethod": "route",
+  "routes": [
+    {
+      "source": "^/my/(.*)$",
+      "destination": "advanced-quality"
+    }
+  ]
+}

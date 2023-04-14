@@ -1,0 +1,212 @@
+{
+    "_version": "1.42.0",
+    "sap.app": {
+        "id": "sap.fe.demo.characteristics",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "@sap/generator-fiori:lrop",
+            "version": "1.8.4",
+            "toolsId": "a8ff34a5-2af0-4a08-b7fc-33ed4ec5995b"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "/my/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [
+                        "annotation"
+                    ],
+                    "localUri": "localService/metadata.xml",
+                    "odataVersion": "4.0"
+                }
+            },
+            "annotation": {
+                "type": "ODataAnnotation",
+                "uri": "annotations/annotation.xml",
+                "settings": {
+                    "localUri": "annotations/annotation.xml"
+                }
+            }
+        },
+        "crossNavigation": {
+            "inbounds": {
+                "sap-fe-demo-characteristics-inbound": {
+                    "signature": {
+                        "parameters": {},
+                        "additionalParameters": "allowed"
+                    },
+                    "semanticObject": "AdvancedQualityPlanning",
+                    "action": "Characteristics",
+                    "title": "{{flpTitle}}",
+                    "subTitle": "{{flpSubtitle}}",
+                    "icon": ""
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": true,
+        "dependencies": {
+            "minUI5Version": "1.110.0",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.ushell": {},
+                "sap.fe.templates": {},
+                "sap.f": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "sap.fe.demo.characteristics.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {
+                    "synchronizationMode": "None",
+                    "operationMode": "Server",
+                    "autoExpandSelect": true,
+                    "earlyRequests": true
+                }
+            },
+            "@i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "uri": "i18n/i18n.properties"
+            }
+        },
+        "resources": {
+            "css": []
+        },
+        "routing": {
+            "routes": [
+                {
+                    "pattern": ":?query:",
+                    "name": "CharacteristicsList",
+                    "target": "CharacteristicsList"
+                },
+                {
+                    "pattern": "Characteristics({key}):?query:",
+                    "name": "CharacteristicsObjectPage",
+                    "target": "CharacteristicsObjectPage"
+                }
+            ],
+            "targets": {
+                "CharacteristicsList": {
+                    "type": "Component",
+                    "id": "CharacteristicsList",
+                    "name": "sap.fe.templates.ListReport",
+                    "options": {
+                        "settings": {
+                            "entitySet": "Characteristics",
+                            "navigation": {
+                                "Characteristics": {
+                                    "detail": {
+                                        "route": "CharacteristicsObjectPage"
+                                    }
+                                }
+                            },
+                            "initialLoad": "Enabled",
+                            "defaultTemplateAnnotationPath": "com.sap.vocabularies.UI.v1.SelectionPresentationVariant#tableView"
+                        }
+                    }
+                },
+                "CharacteristicsObjectPage": {
+                    "type": "Component",
+                    "id": "CharacteristicsObjectPage",
+                    "name": "sap.fe.templates.ObjectPage",
+                    "options": {
+                        "settings": {
+                            "editableHeaderContent": false,
+                            "entitySet": "Characteristics",
+                            "controlConfiguration": {
+                                "@com.sap.vocabularies.UI.v1.LineItem": {
+                                    "actions": {
+                                        "CreateNewAction": {
+                                            "press": "sap.fe.demo.characteristics.custom.CreateNewCharacteristic.CharacteristicsObjectPage",
+                                            "visible": true,
+                                            "enabled": true,
+                                            "requiresSelection": false,
+                                            "text": "Create New"
+                                        }
+                                    }
+                                },
+                                "@com.sap.vocabularies.UI.v1.HeaderFacets": {
+                                    "facets": {
+                                        "HeaderForm": {
+                                            "flexSettings": {
+                                                "designtime": "not-adaptable-visibility"
+                                            },
+                                            "stashed": true
+                                        },
+                                        "Pro": {
+                                            "stashed": true
+                                        }
+                                    }
+                                }
+                            },
+                            "sectionLayout": "Tabs"
+                        }
+                    }
+                },
+                "MyService.CharacteristicsObjectPage": {
+                    "options": {
+                        "settings": {
+                            "controlConfiguration": {
+                                "@com.sap.vocabularies.UI.v1.FieldGroup#QuantitativeCharacteristics": {
+                                    "actions": {
+                                        "Edit": {
+                                            "id": "EditButton",
+                                            "text": "Edit",
+                                            "press": "sap.fe.demo.characteristics.custom.ObjectPageExtController.Limits",
+                                            "requiresSelection": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "extends": {
+            "extensions": {
+                "sap.ui.controllerExtensions": {}
+            }
+        }
+    },
+    "sap.fiori": {
+        "registrationIds": [],
+        "archeType": "transactional"
+    }
+}
